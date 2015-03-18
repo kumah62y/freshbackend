@@ -56,49 +56,49 @@ class Store(models.Model):
 
     # Store opening timings
 
-    store_open_monday = models.TimeField(verbose_name='Store Open Time Monday',default='09:30')
-    store_close_monday = models.TimeField(verbose_name='Store Close Time Monday',default='21:30')
+    store_open_monday = models.TimeField(verbose_name='Monday',default='09:30')
+    store_close_monday = models.TimeField(verbose_name='SMonday',default='21:30')
 
-    store_open_tuesday = models.TimeField(verbose_name='Store Open Time Tuesday',default='09:30')
-    store_close_tuesday = models.TimeField(verbose_name='Store Close Time Tuesday',default='21:30')
+    store_open_tuesday = models.TimeField(verbose_name='Tuesday',default='09:30')
+    store_close_tuesday = models.TimeField(verbose_name='Tuesday',default='21:30')
 
-    store_open_wednesday = models.TimeField(verbose_name='Store Open Time Wednesday',default='09:30')
-    store_close_wednesday = models.TimeField(verbose_name='Store Close Time Wednesday',default='21:30')
+    store_open_wednesday = models.TimeField(verbose_name='Wednesday',default='09:30')
+    store_close_wednesday = models.TimeField(verbose_name='Wednesday',default='21:30')
 
-    store_open_thursday = models.TimeField(verbose_name='Store Open Time Thursday',default='09:30')
-    store_close_thursday = models.TimeField(verbose_name='Store Close Time Thursday',default='21:30')
+    store_open_thursday = models.TimeField(verbose_name='Thursday',default='09:30')
+    store_close_thursday = models.TimeField(verbose_name='Thursday',default='21:30')
 
-    store_open_friday = models.TimeField(verbose_name='Store Open Time Friday',default='09:30')
-    store_close_friday = models.TimeField(verbose_name='Store Close Time Friday',default='21:30')
+    store_open_friday = models.TimeField(verbose_name='Friday',default='09:30')
+    store_close_friday = models.TimeField(verbose_name='Friday',default='21:30')
 
-    store_open_saturday = models.TimeField(verbose_name='Store Open Time Saturday',default='09:30')
-    store_close_saturday = models.TimeField(verbose_name='Store Close Time Saturday',default='21:30')
+    store_open_saturday = models.TimeField(verbose_name='Saturday',default='09:30')
+    store_close_saturday = models.TimeField(verbose_name='Saturday',default='21:30')
 
-    store_open_sunday = models.TimeField(verbose_name='Store Open Time Sunday',default='09:30')
-    store_close_sunday = models.TimeField(verbose_name='Store Close Time Sunday',default='21:30')
+    store_open_sunday = models.TimeField(verbose_name='Sunday',default='09:30')
+    store_close_sunday = models.TimeField(verbose_name='Sunday',default='21:30')
 
     # Store delivery timings
 
-    store_delivery_start_monday = models.TimeField(verbose_name='Store Delivery Start Time Monday',default='09:30')
-    store_delivery_close_monday = models.TimeField(verbose_name='Store Delivery Close Time Monday',default='21:30')
+    store_delivery_start_monday = models.TimeField(verbose_name='Monday',default='09:30')
+    store_delivery_close_monday = models.TimeField(verbose_name='Monday',default='21:30')
 
-    store_delivery_start_tuesday = models.TimeField(verbose_name='Store Delivery Start Time Tuesday',default='09:30')
-    store_delivery_close_tuesday = models.TimeField(verbose_name='Store Delivery Close Time Tuesday',default='21:30')
+    store_delivery_start_tuesday = models.TimeField(verbose_name='Tuesday',default='09:30')
+    store_delivery_close_tuesday = models.TimeField(verbose_name='Tuesday',default='21:30')
 
-    store_delivery_start_wednesday = models.TimeField(verbose_name='Store Delivery Start Time Wednesday',default='09:30')
-    store_delivery_close_wednesday = models.TimeField(verbose_name='Store Delivery Close Time Wednesday',default='21:30')
+    store_delivery_start_wednesday = models.TimeField(verbose_name='Wednesday',default='09:30')
+    store_delivery_close_wednesday = models.TimeField(verbose_name='Wednesday',default='21:30')
 
-    store_delivery_start_thursday = models.TimeField(verbose_name='Store Delivery Start Time Thursday',default='09:30')
-    store_delivery_close_thursday = models.TimeField(verbose_name='Store Delivery Close Time Thursday',default='21:30')
+    store_delivery_start_thursday = models.TimeField(verbose_name='Thursday',default='09:30')
+    store_delivery_close_thursday = models.TimeField(verbose_name='Thursday',default='21:30')
 
-    store_delivery_start_friday = models.TimeField(verbose_name='Store Delivery Start Time Friday',default='09:30')
-    store_delivery_close_friday = models.TimeField(verbose_name='Store Delivery Close Time Friday',default='21:30')
+    store_delivery_start_friday = models.TimeField(verbose_name='Friday',default='09:30')
+    store_delivery_close_friday = models.TimeField(verbose_name='Friday',default='21:30')
 
-    store_delivery_start_saturday = models.TimeField(verbose_name='Store Delivery Start Time Saturday',default='09:30')
-    store_delivery_close_saturday = models.TimeField(verbose_name='Store Delivery Close Time Saturday',default='21:30')
+    store_delivery_start_saturday = models.TimeField(verbose_name='Saturday',default='09:30')
+    store_delivery_close_saturday = models.TimeField(verbose_name='Saturday',default='21:30')
 
-    store_delivery_start_sunday = models.TimeField(verbose_name='Store Delivery Start Time Sunday',default='09:30')
-    store_delivery_close_sunday = models.TimeField(verbose_name='Store Delivery Close Time Sunday',default='21:30')
+    store_delivery_start_sunday = models.TimeField(verbose_name='Sunday',default='09:30')
+    store_delivery_close_sunday = models.TimeField(verbose_name='Sunday',default='21:30')
 
     store_sales_rep = models.CharField(max_length=100,blank=True, verbose_name='Sales Representative')
     store_account_manager = models.CharField(max_length=100,blank=True, verbose_name='Account Manager')

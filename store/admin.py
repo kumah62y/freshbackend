@@ -66,8 +66,10 @@ class StoreAdmin(admin.ModelAdmin):
     )
 
     search_fields = ['store_name', 'store_locality']
-    list_display = ['store_name', 'store_locality', 'store_type', 'store_address', 'store_status','store_display_order']
-    list_editable = ['store_name', 'store_locality', 'store_type', 'store_address', 'store_status','store_display_order']
+    list_display = ['store_name', 'store_locality', 'store_type', 'store_address',
+                    'store_status','store_display_order']
+    list_editable = ['store_name', 'store_locality', 'store_type', 'store_address',
+                     'store_status','store_display_order']
     list_filter = ['store_locality', 'store_status', 'store_type']
     readonly_fields = ['store_added_by','store_added_time','store_updated_by', 'store_updated_time']
     prepopulated_fields = {'store_slug': ('store_name', 'store_locality',)}
@@ -77,8 +79,55 @@ class StoreAdmin(admin.ModelAdmin):
         model = Store
 
 
+
+class LocalityAdmin(admin.ModelAdmin):
+
+    search_fields = ['locality',]
+    list_filter = ['city',]
+    list_display = ['locality', 'city',]
+    list_editable = ['locality', 'city',]
+
+    class Meta:
+        model = Locality
+
+class BrandChainsAdmin(admin.ModelAdmin):
+
+    search_fields = ['brand_name',]
+    list_filter = ['brand_status',]
+    list_display = ['brand_name', 'brand_status',]
+    list_editable = ['brand_name', 'brand_status',]
+    readonly_fields = ['brand_added_by','brand_added_time','brand_updated_by', 'brand_updated_time']
+
+    class Meta:
+        model = Brand_Chains
+
+class FinancialChainAdmin(admin.ModelAdmin):
+
+    search_fields = ['financial_brand_name',]
+    list_filter = ['financial_brand_status',]
+    list_display = ['financial_brand_name', 'financial_brand_status',]
+    list_editable = ['financial_brand_name', 'financial_brand_status',]
+    readonly_fields = ['financial_brand_added_by','financial_brand_added_time',
+                       'financial_brand_updated_by', 'financial_brand_updated_time']
+
+    class Meta:
+        model = Financial_Chains
+
+class PaymentTypeAdmin(admin.ModelAdmin):
+
+    search_fields = ['payment_type_name',]
+    list_filter = ['payment_type_status',]
+    list_display = ['payment_type_name', 'payment_type_status',]
+    list_editable = ['payment_type_name', 'payment_type_status',]
+    readonly_fields = ['payment_type_added_by','payment_type_added_time',
+                       'payment_type_updated_by', 'payment_type_updated_time']
+
+    class Meta:
+        model = Payment_Types
+
+
 admin.site.register(Store, StoreAdmin)
-admin.site.register(Locality)
-admin.site.register(Brand_Chains)
-admin.site.register(Financial_Chains)
-admin.site.register(Payment_Types)
+admin.site.register(Locality,LocalityAdmin)
+admin.site.register(Brand_Chains,BrandChainsAdmin)
+admin.site.register(Financial_Chains,FinancialChainAdmin)
+admin.site.register(Payment_Types,PaymentTypeAdmin)
