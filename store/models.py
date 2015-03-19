@@ -5,12 +5,6 @@ from django.db import models
 
 
 class Store(models.Model):
-    CITY_CHOICES = (
-        ('Mumbai', 'Mumbai'),
-        ('Delhi', 'Delhi'),
-        ('Gurgaon', 'Gurgaon'),
-        ('Noida', 'Noida'),
-    )
 
     COUNTRY_CHOICES = (
         ('India', 'India'),
@@ -31,8 +25,8 @@ class Store(models.Model):
 
     store_name = models.CharField(max_length=100, help_text='Enter Store Name', verbose_name='Store Name')
     store_address = models.CharField(max_length=200, verbose_name='Store Address')
-    store_locality = models.ForeignKey('Locality', verbose_name='Store Locality')
-    store_city = models.CharField(max_length=100, choices=CITY_CHOICES, default='Mumbai', verbose_name='Store City')
+    store_locality_city = models.ForeignKey('Locality', verbose_name='Store Locality & City')
+    # store_city = models.CharField(max_length=100, choices=CITY_CHOICES, default='Mumbai', verbose_name='Store City')
     store_country = models.CharField(max_length=100, default='India', choices=COUNTRY_CHOICES,
                                      verbose_name='Store Country')
     store_pincode = models.CharField(max_length=10, default=201301, verbose_name='Store PINCODE')
@@ -130,21 +124,29 @@ class Store(models.Model):
     store_updated_time = models.DateTimeField(verbose_name='Store Update Time', auto_now=True,blank=True,null=True)
 
     def __str__(self):
-        return '%s - %s' % (self.store_name, self.store_locality)
+        return '%s - %s' % (self.store_name, self.store_locality_city)
 
 
     class Meta:
-        ordering = ['store_locality']
-        unique_together = ('store_name', 'store_locality', 'store_city',)
-        index_together = [
-            ['store_locality', 'store_city'],
-        ]
+        ordering = ['store_locality_city__city','store_locality_city__locality']
+        unique_together = ('store_name', 'store_locality_city',)
+        # index_together = [
+        #     ['store_locality', 'store_city'],
+        # ]
         verbose_name = "Store"
         verbose_name_plural = "Stores"
 
 
 class Locality(models.Model):
-    city = models.CharField(max_length=100, choices=Store.CITY_CHOICES)
+
+    CITY_CHOICES = (
+        ('Mumbai', 'Mumbai'),
+        ('Delhi', 'Delhi'),
+        ('Gurgaon', 'Gurgaon'),
+        ('Noida', 'Noida'),
+    )
+
+    city = models.CharField(max_length=100, choices=CITY_CHOICES)
     locality = models.CharField(max_length=100)
 
     def __str__(self):
