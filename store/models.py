@@ -34,13 +34,13 @@ class Store(models.Model):
 
     store_type = models.CharField(max_length=50, choices=STORE_TYPE, default='Grocery', verbose_name='Store Type')
 
-    store_slug = models.SlugField(unique=True, verbose_name='Store Slug')
+    # store_slug = models.SlugField(unique=True, verbose_name='Store Slug',blank=True)
 
     store_phone_number = models.CharField(max_length=20,blank=True, verbose_name='Store Phone Number')
     store_order_number = models.CharField(max_length=20,blank=True, verbose_name='Store Order Number')
     store_manager_number = models.CharField(max_length=20,blank=True, verbose_name='Store Manager Number ')
     store_owner_number = models.CharField(max_length=20,blank=True, verbose_name='Store Owner Number')
-    store_owner_email = models.EmailField(null=True,verbose_name='Store Owner Email')
+    store_owner_email = models.EmailField(blank=True,verbose_name='Store Owner Email')
 
     store_latitude = models.DecimalField(max_digits=8, decimal_places=3, null=True, blank=True,
                                          verbose_name='Store Latitude')

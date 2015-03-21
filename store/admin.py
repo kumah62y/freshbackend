@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import models
 from django import forms
 
-from store.models import Store, Locality, Brand_Chains, Financial_Chains, Payment_Types
+from .models import Store, Locality, Brand_Chains, Financial_Chains, Payment_Types
 
 # Register your models here.
 
@@ -10,8 +10,8 @@ class StoreAdmin(admin.ModelAdmin):
     # date_hierarchy = 'timestamp'  # updated
     fieldsets = (
         (None, {
-            'fields': ('store_name', 'store_address', ('store_locality', 'store_city', 'store_pincode',),
-                       ('store_status', 'store_type'), 'store_slug','store_display_order',
+            'fields': ('store_name', 'store_address', ('store_locality_city', 'store_pincode',),
+                       ('store_status', 'store_type'), 'store_display_order',
             )
         }),
         ('Contact Information', {
@@ -65,14 +65,14 @@ class StoreAdmin(admin.ModelAdmin):
         }),
     )
 
-    search_fields = ['store_name', 'store_locality']
-    list_display = ['store_name', 'store_locality', 'store_type', 'store_address',
+    search_fields = ['store_name', 'store_locality_city']
+    list_display = ['store_name', 'store_locality_city', 'store_type', 'store_address',
                     'store_status','store_display_order']
-    list_editable = ['store_name', 'store_locality', 'store_type', 'store_address',
+    list_editable = ['store_locality_city', 'store_type', 'store_address',
                      'store_status','store_display_order']
-    list_filter = ['store_locality', 'store_status', 'store_type']
+    list_filter = ['store_locality_city__city','store_locality_city__locality', 'store_status', 'store_type']
     readonly_fields = ['store_added_by','store_added_time','store_updated_by', 'store_updated_time']
-    prepopulated_fields = {'store_slug': ('store_name', 'store_locality',)}
+    # prepopulated_fields = {'store_slug': ('store_name', 'store_locality_city',)}
     exclude = ['store_country']
 
     class Meta:
@@ -84,8 +84,8 @@ class LocalityAdmin(admin.ModelAdmin):
 
     search_fields = ['locality',]
     list_filter = ['city',]
-    list_display = ['locality', 'city',]
-    list_editable = ['locality', 'city',]
+    list_display = ['city','locality',]
+    list_editable = ['locality',]
 
     class Meta:
         model = Locality
@@ -95,7 +95,7 @@ class BrandChainsAdmin(admin.ModelAdmin):
     search_fields = ['brand_name',]
     list_filter = ['brand_status',]
     list_display = ['brand_name', 'brand_status',]
-    list_editable = ['brand_name', 'brand_status',]
+    list_editable = ['brand_status',]
     readonly_fields = ['brand_added_by','brand_added_time','brand_updated_by', 'brand_updated_time']
 
     class Meta:
@@ -106,7 +106,7 @@ class FinancialChainAdmin(admin.ModelAdmin):
     search_fields = ['financial_brand_name',]
     list_filter = ['financial_brand_status',]
     list_display = ['financial_brand_name', 'financial_brand_status',]
-    list_editable = ['financial_brand_name', 'financial_brand_status',]
+    list_editable = ['financial_brand_status',]
     readonly_fields = ['financial_brand_added_by','financial_brand_added_time',
                        'financial_brand_updated_by', 'financial_brand_updated_time']
 
@@ -118,7 +118,7 @@ class PaymentTypeAdmin(admin.ModelAdmin):
     search_fields = ['payment_type_name',]
     list_filter = ['payment_type_status',]
     list_display = ['payment_type_name', 'payment_type_status',]
-    list_editable = ['payment_type_name', 'payment_type_status',]
+    list_editable = [ 'payment_type_status',]
     readonly_fields = ['payment_type_added_by','payment_type_added_time',
                        'payment_type_updated_by', 'payment_type_updated_time']
 
